@@ -1,0 +1,197 @@
+@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+.filtr-container {
+  text-align: center;
+}
+audio, canvas, iframe, img, svg, video {
+  vertical-align: middle;
+}
+
+audio, canvas, img, video {
+  max-width: 100%;
+  height: auto;
+  box-sizing: border-box;
+}
+
+#about img {
+  border-style: none;
+  padding: 0px;
+  margin: 50px 0px;
+  height: 300px;
+  width: 470px;
+}
+figure {
+  width: 160px;
+  margin: 40px 160px;
+  height: 160px;
+}
+
+figcaption {
+  text-align: center;
+}
+
+#about{
+  background-color: #fbfafd;
+  padding: 50px 0px;
+}
+#empresa
+{
+  padding: 20; 
+  margin: 1;
+}
+
+div {
+  text-align: center;
+}
+
+.card-body {
+  height: 124px;
+}
+
+.filtr-item {
+  padding-top: 30px;
+}
+
+.filtr-controls span {
+  cursor: pointer;
+}
+
+.filtr-controls span:after {
+  content: ' ';
+  width: 0;
+  height: 1px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  background: transparent;
+  -webkit-transition: all .6s ease;
+  transition: all .6s ease;
+}
+
+.filtr-controls span.active:after {
+  width: 100%;
+  left: 0;
+  background: #000;
+}
+
+.filtr-loading {
+  border: 5px solid #333;
+  position: relative;
+  border-radius: 40px;
+  height: 40px;
+  left: 50%;
+  margin: 80px 0;
+  opacity: 0;
+  top: 0;
+  width: 40px;
+  z-index: 2;
+  -webkit-animation: pulsate 1s ease-out infinite;
+  animation: pulsate 1s ease-out infinite;
+}
+
+/* Covid Sympotom */
+#covid_symptoms{
+  background-color:#f3f0e8;
+  padding: 50px;
+}
+#covid_symptoms img{
+    width: 150px;
+    height: 150px;
+    margin: 10px 0px;
+}
+#covid_symptoms p{
+  font-size: 20px;
+  font-family: Acme, sans-serif;
+}
+#covid_symptoms h1{
+  font-size: 3rem;
+  text-align: center;
+}
+/* Prevention Covid */
+#prevention_covid{
+  background-color:#C7EAC7 ;
+  padding: 50px;
+}
+#prevention p{
+  font-size: 20px;
+  font-family: Acme, sans-serif;
+}
+#prevention .profile-back {
+  text-align: center;
+}
+
+#prevention {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+#prevention h1{
+  font-size: 3rem;
+  text-align: center;
+}
+
+#prevention .profile-card {
+
+  width: 370px;
+  text-align: center;
+  margin: 10px 30px;
+}
+
+#preventation .profile-pic {
+  border-radius: 0px;
+}
+
+#prevention .profile-pic {
+  width: 150px;
+  height: 150px;
+}
+
+#prevention img {
+  width: 150px;
+  height: 150px;
+  margin: 10px 0px;
+}
+
+/*covid update */
+
+#covid_update p{
+    font-size: 28px;
+    font-family: Acme, sans-serif;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    color: #000;
+}
+#covid_update h1{
+  text-align: center;
+  font-size: 3rem;
+}
+#covid_update h5{
+  font-size: 30px;
+}
+#bd {
+  padding: 30px;
+}
+.corona_anime img {
+  animation: coranaround 3s linear infinite;
+  vertical-align: middle;
+  border-style: none;
+}
+.corona_anime img{ animation: coranaround 3s linear infinite}
+
+@keyframes coranaround{ 
+	0% { transform: rotate(0); }
+	100% { transform: rotate(360deg); }
+ }
+
+ /* Footer */
+ #footer{
+  background: black;
+  text-align: center;
+  margin: 0px;
+  padding: 10px;
+ }
+ #footer p{
+  color: grey; 
+ }
+
+
+
