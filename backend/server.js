@@ -1,11 +1,15 @@
 import express from 'express'
 import dotenv from 'dotenv'
-import meds from './data/meds'
-import ambulance from './data/ambulance'
-import doctors from './data/doctors'
+import meds from './data/meds.js'
+import ambulance from './data/ambulance.js'
+import doctors from './data/doctors.js'
+import connectDB from './config/db.js'
 
 
 dotenv.config()
+
+connectDB()
+
 const app = express()
 
 app.get('/api/meds', (req, res) => {
