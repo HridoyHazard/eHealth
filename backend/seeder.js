@@ -5,7 +5,11 @@ import meds from "./data/meds.js";
 import User from "./models/userModel.js";
 import Meds from "./models/medsModel.js";
 import Order from "./models/orderModel.js";
-import connectDB from './config/db.js'
+import doctors from "./data/doctors.js";
+import Doctors from "./models/doctorsModel.js";
+import ambulances from "./data/ambulances.js";
+import Ambulances from "./models/ambulancesModel.js";
+import connectDB from './config/db.js';
 
 dotenv.config();
 
@@ -15,8 +19,10 @@ const importData = async () => {
   try {
     await Order.deleteMany();
     await Meds.deleteMany();
+    await Doctors.deleteMany();
+    await Ambulances.deleteMany();
     await User.deleteMany();
-
+    
     const createdUsers = await User.insertMany(users);
 
     const adminUser = createdUsers[0]._id;
@@ -25,6 +31,15 @@ const importData = async () => {
       return {...meds, user: adminUser };
     });
 
+    const sampleDoctors = doctors.map((doctors) => {
+      return {...doctors, user: adminUser };
+    });
+    const sampleAmbulances = ambulances.map((ambulances) => {
+      return {...ambulances, user: adminUser };
+    });
+
+    await Doctors.insertMany(sampleDoctors);
+    await Ambulances.insertMany(sampleAmbulances);
     await Meds.insertMany(sampleMeds);
     console.log("Data Imported!");
     process.exit();
@@ -39,10 +54,12 @@ const destroyData = async () => {
   try {
     await Order.deleteMany();
     await Meds.deleteMany();
+    await Doctors.deleteMany();
+    await Ambulances.deleteMany();
     await User.deleteMany();
-
     console.log("Data Destroyed!");
     process.exit();
+
   } catch (error) {
     console.error(`${error}`);
     process.exit(1);
