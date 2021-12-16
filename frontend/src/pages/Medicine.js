@@ -1,20 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, {useEffect } from "react";
+import {useDispatch, useSelector} from 'react-redux';
 import { Row, Col } from "react-bootstrap";
-import Med from "../components/Med";
-import axios from "axios";
+import Med from "../components/Med.js";
+import {listMeds} from "../actions/medsAction.js"
 
 export default function Medicine() {
-  const [meds, setmeds] = useState([]);
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    const fetchMeds = async () => {
-      const { data } = await axios.get("/api/meds");
+    dispatch(listMeds())
+  }, [dispatch]);
 
-      setmeds(data);
-    }
-    fetchMeds();
-
-  }, []);
+  const meds = []
 
 return (
     <>
