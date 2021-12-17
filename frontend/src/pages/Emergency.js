@@ -1,32 +1,38 @@
-import React,{useState,useEffect} from "react";
+import React, { useEffect } from "react";
 import { Row, Col } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 import Ambulance from "../components/Ambulance";
-import axios from "axios";
+import { listAmbulances } from "../actions/ambulanceAction";
+import Message from "../components/Message.js";
+import Loader from "../components/Loader.js";
 
 export default function Emergency() {
+  
+  const dispatch = useDispatch();
 
-  const [ambulance, setambulance] = useState([]);
+  const ambulancesList = useSelector((state) => state.ambulancesList);
+  const { loading, error, ambulances } = ambulancesList;
 
   useEffect(() => {
-    const fetchambulance = async () => {
-      const { data } = await axios.get("/api/ambulance");
-
-      setambulance(data);
-    }
-    fetchambulance();
-
-  }, []);
+    dispatch(listAmbulances());
+  }, [dispatch]);
 
   return (
     <div>
       <h1>Emergency Ambulance Services</h1>
-      <Row>
-        {ambulance.map((ambulance) => (
-          <Col sm={12} md={6} lg={4} xl={3}>
-            <Ambulance ambulance = {ambulance} />
-          </Col>
-        ))}
-      </Row>
+      {loading ? (
+        <Loader />
+      ) : error ? (
+        <Message variant="danger">{error}</Message>
+      ) : (
+        <Row>
+          {ambulances.map((ambulances) => (
+            <Col sm={12} md={6} lg={4} xl={3}>
+              <Ambulance ambulances={ambulances} />
+            </Col>
+          ))}
+        </Row>
+      )}
     </div>
   );
 }

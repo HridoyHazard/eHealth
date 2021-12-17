@@ -1,26 +1,35 @@
-import React,{useState,useEffect} from "react";
+import React,{useEffect} from "react";
 import { Row, Col, Image, ListGroup, Card, Button } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import axios from 'axios';
+import { listMedDetails } from "../../actions/medsAction.js";
+import Loader from "../../components/Loader.js";
+import Message from "../../components/Message.js";
+
+
 
 const ProductScreen = ({ match }) => {
-  const [med, setmed] = useState({});
+
+  const dispatch = useDispatch()
+
+  const medsDetails = useSelector(state => state.medsDetails)
+  const {loading , error , med} = medsDetails
 
   useEffect(() => {
-    const fetchmed = async () => {
-      const { data } = await axios.get(`/api/meds/${match.params.id}`);
-
-      setmed(data);
-    }
-    fetchmed();
-
-  }, [match]);
+    dispatch(listMedDetails(match.params.id))
+   
+  }, [dispatch, match]);
 
   return (
     <>
       <Link className="btn btn-light my-3" to="/Medicine">
         Go Back
       </Link>
+      {loading ? (
+        <Loader />
+      ) : error ? (
+        <Message variant="danger">{error}</Message>
+      ) : (
       <Row>
         <Col md={6}>
           <Image src={med.image} alt={med.name} fluid />
@@ -63,6 +72,7 @@ const ProductScreen = ({ match }) => {
           </Card>
         </Col>
       </Row>
+      )}
     </>
   );
 };

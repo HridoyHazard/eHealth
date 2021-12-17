@@ -1,3 +1,7 @@
-export const Meds_List_Request = 'Meds_List_Request'
-export const Meds_List_Success = 'Meds_List_Success'
-export const Meds_List_Fail = 'Meds_List_Fail'
+export const MED_LIST_REQUEST = 'MED_LIST_REQUEST'
+export const MED_LIST_SUCCESS = 'MED_LIST_SUCCESS'
+export const MED_LIST_FAIL = 'MED_LIST_FAIL'
+
+export const MED_DETAILS_REQUEST = 'MED_DETAILS_REQUEST'
+export const MED_DETAILS_SUCCESS = 'MED_DETAILS_SUCCESS'
+export const MED_DETAILS_FAIL = 'MED_DETAILS_FAIL'

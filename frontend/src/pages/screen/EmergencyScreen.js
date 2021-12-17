@@ -1,37 +1,42 @@
-import React,{useState,useEffect} from "react";
+import React,{useEffect} from "react";
 import { Row, Col, Image, ListGroup, Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { listAmbulanceDetails } from "../../actions/ambulanceAction";
+import Loader from "../../components/Loader";
+import Message from "../../components/Message";
 
 export const EmergencyScreen = ({ match }) => {
 
-  const [amb, setamb] = useState({});
+  const dispatch = useDispatch()
 
+  const ambulanceDetails = useSelector(state => state.ambulanceDetails)
+  const {loading , error , ambulances} = ambulanceDetails
   useEffect(() => {
-    const fetchamb = async () => {
-      const { data } = await axios.get(`/api/ambulance/${match.params.id}`);
+    dispatch(listAmbulanceDetails(match.params.id))
 
-      setamb(data);
-    }
-    fetchamb();
-
-  }, [match]);
+  }, [dispatch, match]);
   return (
     <>
       <Link className="btn btn-light my-3" to="/Emergency">
         Go Back
       </Link>
+      {loading ? (
+        <Loader />
+      ) : error ? (
+        <Message variant="danger">{error}</Message>
+      ) : (
       <Row>
         <Col md={6}>
-          <Image src={amb.image} alt={amb.name} fluid />
+          <Image src={ambulances.image} alt={ambulances.name} fluid />
         </Col>
         <Col md={3}>
           <ListGroup variant="flush">
             <ListGroup.Item>
-              <h3>{amb.name}</h3>
+              <h3>{ambulances.name}</h3>
             </ListGroup.Item>
-            <ListGroup.Item>Service: {amb.service}</ListGroup.Item>
-            <ListGroup.Item>{amb.degree}</ListGroup.Item>
+            <ListGroup.Item>Service: {ambulances.service}</ListGroup.Item>
+            <ListGroup.Item>{ambulances.degree}</ListGroup.Item>
           </ListGroup>
         </Col>
         <Col md={3}>
@@ -40,14 +45,14 @@ export const EmergencyScreen = ({ match }) => {
               <ListGroup.Item>
                 <Row>
                   <Col>Type: </Col>
-                  <Col>{amb.type}</Col>
+                  <Col>{ambulances.type}</Col>
                 </Row>
               </ListGroup.Item>
 
               <ListGroup.Item>
                 <Row>
                   <Col>Hotline: </Col>
-                  <Col>{amb.hotline}</Col>
+                  <Col>{ambulances.hotline}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
@@ -57,6 +62,7 @@ export const EmergencyScreen = ({ match }) => {
           </Card>
         </Col>
       </Row>
+      )}
     </>
   );
 };

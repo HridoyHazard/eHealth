@@ -1,37 +1,43 @@
-import React,{useState,useEffect} from 'react'
+import React,{useEffect} from 'react'
 import { Link } from 'react-router-dom';
 import { Row, Col, Image, ListGroup, Card, Button } from "react-bootstrap";
-import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux';
+import Loader from '../../components/Loader.js';
+import Message from '../../components/Message.js';
+import { listDoctorDetails } from '../../actions/doctorsAction';
+
 
 export const DoctorScreen = ({ match }) => {
 
-  const [doc, setdoc] = useState({});
+  const dispatch = useDispatch()
 
-  useEffect(() => {
-    const fetchdoc = async () => {
-      const { data } = await axios.get(`/api/doctors/${match.params.id}`);
+  const doctorsDetails = useSelector(state => state.doctorsDetails)
+  const {loading , error , doctor} = doctorsDetails
 
-      setdoc(data);
-    }
-    fetchdoc();
-
-  }, [match]);
+  useEffect(() => { 
+    dispatch(listDoctorDetails(match.params.id))
+  }, [dispatch, match]);
   return (
     <>
       <Link className="btn btn-light my-3" to="/Doctors">
         Go Back
       </Link>
+      {loading ? (
+        <Loader />
+      ) : error ? (
+        <Message variant="danger">{error}</Message>
+      ) : (
       <Row>
         <Col md={6}>
-          <Image src={doc.image} alt={doc.name} fluid />
+          <Image src={doctor.image} alt={doctor.name} fluid />
         </Col>
         <Col md={3}>
           <ListGroup variant="flush">
             <ListGroup.Item>
-              <h3>{doc.name}</h3>
+              <h3>{doctor.name}</h3>
             </ListGroup.Item>
-            <ListGroup.Item>{doc.degree}</ListGroup.Item>
-            <ListGroup.Item>Specialist: {doc.specialist}</ListGroup.Item>
+            <ListGroup.Item>{doctor.degree}</ListGroup.Item>
+            <ListGroup.Item>Specialist: {doctor.specialist}</ListGroup.Item>
           </ListGroup>
         </Col>
         <Col md={3}>
@@ -41,7 +47,7 @@ export const DoctorScreen = ({ match }) => {
                 <Row>
                   <Col>Chamber: </Col>
                   <Col>
-                    <strong>{doc.Chamber}</strong>
+                    <strong>{doctor.Chamber}</strong>
                   </Col>
                 </Row>
               </ListGroup.Item>
@@ -50,7 +56,7 @@ export const DoctorScreen = ({ match }) => {
                 <Row>
                   <Col>Available: </Col>
                   <Col>
-                    {doc.Available}
+                    {doctor.Available}
                   </Col>
                 </Row>
               </ListGroup.Item>
@@ -63,6 +69,7 @@ export const DoctorScreen = ({ match }) => {
           </Card>
         </Col>
       </Row>
+      )}
     </>
   );
 };

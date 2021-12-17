@@ -3,16 +3,16 @@ import { Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 
-export default function Ambulance({ambulance}) {
+export default function Ambulance({ambulances}) {
     return (
         <Card className="my-3 P-3 rounded">
-      <Link to={`ambulance/${ambulance._id}`}>
-        <Card.Img src={ambulance.image} variant="top" />
+      <Link to={`ambulances/${ambulances._id}`}>
+        <Card.Img src={ambulances.image} variant="top" />
       </Link>
 
       <Card.Body>
-        <Link to={`/ambulance/${ambulance._id}`}>
-          <strong>{ambulance.name}</strong>
+        <Link to={`/ambulances/${ambulances._id}`}>
+          <strong>{ambulances.name}</strong>
         </Link>
       </Card.Body>
     </Card>
