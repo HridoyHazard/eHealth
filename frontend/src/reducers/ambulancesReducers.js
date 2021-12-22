@@ -5,7 +5,7 @@ import {
   AMBU_DETAILS_REQUEST,
   AMBU_DETAILS_SUCCESS,
   AMBU_DETAILS_FAIL,
-} from "../constants/ambulanceConstants.js";
+} from "../constants/ambulancesConstants.js";
 
 export const ambulancesListReducer = (state = { ambulances: [] }, action) => {
   switch (action.type) {

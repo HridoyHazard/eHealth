@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import Ambulance from "../components/Ambulance";
-import { listAmbulances } from "../actions/ambulanceAction";
+import Ambulance from "../components/Ambulance.js";
+import { listAmbulances } from "../actions/ambulancesAction.js";
 import Message from "../components/Message.js";
 import Loader from "../components/Loader.js";
 
