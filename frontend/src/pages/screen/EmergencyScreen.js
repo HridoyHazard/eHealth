@@ -10,7 +10,7 @@ export const EmergencyScreen = ({ match }) => {
   const dispatch = useDispatch();
 
   const ambulancesDetails = useSelector((state) => state.ambulancesDetails);
-  const { loading, error, ambulance } = ambulancesDetails;
+  const { loading, error, ambulances } = ambulancesDetails;
   useEffect(() => {
     dispatch(listAmbulanceDetails(match.params.id));
   }, [dispatch, match]);
@@ -26,15 +26,15 @@ export const EmergencyScreen = ({ match }) => {
       ) : (
         <Row>
           <Col md={6}>
-            <Image src={ambulance.image} alt={ambulance.name} fluid />
+            <Image src={ambulances.image} alt={ambulances.name} fluid />
           </Col>
           <Col md={3}>
             <ListGroup variant="flush">
               <ListGroup.Item>
-                <h3>{ambulance.name}</h3>
+                <h3>{ambulances.name}</h3>
               </ListGroup.Item>
-              <ListGroup.Item>Service: {ambulance.service}</ListGroup.Item>
-              <ListGroup.Item>{ambulance.degree}</ListGroup.Item>
+              <ListGroup.Item>Service: {ambulances.service}</ListGroup.Item>
+              <ListGroup.Item>{ambulances.degree}</ListGroup.Item>
             </ListGroup>
           </Col>
           <Col md={3}>
@@ -43,14 +43,14 @@ export const EmergencyScreen = ({ match }) => {
                 <ListGroup.Item>
                   <Row>
                     <Col>Type: </Col>
-                    <Col>{ambulance.type}</Col>
+                    <Col>{ambulances.type}</Col>
                   </Row>
                 </ListGroup.Item>
 
                 <ListGroup.Item>
                   <Row>
                     <Col>Hotline: </Col>
-                    <Col>{ambulance.hotline}</Col>
+                    <Col>{ambulances.hotline}</Col>
                   </Row>
                 </ListGroup.Item>
                 <ListGroup.Item>

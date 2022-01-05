@@ -1,6 +1,18 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { NavDropdown } from "react-bootstrap";
+import { logout } from "../actions/userAction.js";
+
 export default function Navbar() {
+  const dispatch = useDispatch();
+
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
+  const logoutHandler = () => {
+    dispatch(logout());
+  };
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -22,7 +34,11 @@ export default function Navbar() {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ms-auto">
               <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" to="/Covid">
+                <Link
+                  className="nav-link active"
+                  aria-current="page"
+                  to="/Covid"
+                >
                   CovicZone
                 </Link>
               </li>
@@ -37,15 +53,26 @@ export default function Navbar() {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="Emergency">
+                <Link className="nav-link" to="/Emergency">
                   Emergency
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/Signup">
-                  Sign Up
-                </Link>
-              </li>
+              {userInfo ? (
+                <NavDropdown title={userInfo.name} id="username">
+                  <Link className="nav-link" to="/ProfileScreen">
+                    <NavDropdown.Item>Profile</NavDropdown.Item>
+                  </Link>
+                  <NavDropdown.Item onClick={logoutHandler}>
+                    Logout
+                  </NavDropdown.Item>
+                </NavDropdown>
+              ) : (
+                <li className="nav-item">
+                  <Link className="nav-link" to="/Login">
+                    Login
+                  </Link>
+                </li>
+              )}
             </ul>
           </div>
         </div>
