@@ -4,7 +4,7 @@ import Covid from "../src/pages/Covid.js";
 import Medicine from "./pages/Medicine.js";
 import Doctors from "./pages/Doctors.js";
 import Emergency from "./pages/Emergency.js";
-import ProductScreen from "./pages/screen/ProductScreen.js";
+import MedicineScreen from "./pages/screen/MedicineScreen.js";
 import { BrowserRouter, Route } from "react-router-dom";
 import DoctorScreen from "./pages/screen/DoctorScreen.js";
 import EmergencyScreen from "./pages/screen/EmergencyScreen.js";
@@ -13,11 +13,15 @@ import ProfileScreen from "./pages/screen/ProfileScreen";
 import Signup from "./pages/Signup.js";
 import Login from "./pages/Login.js";
 import { Container } from "react-bootstrap";
-import Navbar from '../src/components/Navbar.js'
+import Navbar from "../src/components/Navbar.js";
 import ShippingScreen from "./pages/screen/ShippingScreen";
 import PaymentScreen from "./pages/screen/PaymentScreen";
 import PlaceOrderScreen from "./pages/screen/PlaceOrderScreen";
 import OrderScreen from "./pages/screen/OrderScreen";
+import UserListScreen from "./pages/screen/UserListScreen";
+import UserEditScreen from "./pages/screen/UserEditScreen";
+import MedicineListScreen from "./pages/screen/MedicineListScreen";
+import MedicineEditScreen from "./pages/screen/MedicineEditScreen";
 
 function App() {
   return (
@@ -27,25 +31,28 @@ function App() {
       <Route exact path="/Home" component={Home} />
       <Route exact path="/Covid" component={Covid} />
       <Container>
-        
         <Route exact path="/Medicine" component={Medicine} />
-        <Route exact path="/meds/:id" component={ProductScreen} />
+        <Route exact path="/meds/:id" component={MedicineScreen} />
         <Route exact path="/cart/:id?" component={CartScreen} />
         <Route exact path="/Doctors" component={Doctors} />
         <Route exact path="/doctors/:id" component={DoctorScreen} />
         <Route exact path="/Emergency" component={Emergency} />
         <Route exact path="/ambulance/:id" component={EmergencyScreen} />
 
-      
-      <Route exact path="/Shipping" component={ShippingScreen} />
-      <Route exact path="/payment" component={PaymentScreen} />
-      <Route exact path="/order/:id" component={OrderScreen} />
-      <Route exact path="/placeorder" component={PlaceOrderScreen} />
-      <Route exact path="/Signup" component={Signup} />
-      <Route exact path="/ProfileScreen" component={ProfileScreen} />
-      <Route exact path="/Login" component={Login} />
+        <Route exact path="/Shipping" component={ShippingScreen} />
+        <Route exact path="/payment" component={PaymentScreen} />
+        <Route exact path="/order/:id" component={OrderScreen} />
+        <Route exact path="/placeorder" component={PlaceOrderScreen} />
+        <Route exact path="/Signup" component={Signup} />
+        <Route exact path="/ProfileScreen" component={ProfileScreen} />
+        <Route exact path="/admin/userlist" component={UserListScreen} />
+        
+        <Route exact path="/admin/medlist" component={MedicineListScreen} />
+
+        <Route exact path="/admin/user/:id/edit" component={UserEditScreen} />
+        <Route exact path="/admin/med/:id/edit" component={MedicineEditScreen} />
+        <Route exact path="/Login" component={Login} />
       </Container>
-      
     </BrowserRouter>
   );
 }

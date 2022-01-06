@@ -73,6 +73,22 @@ export default function Navbar() {
                   </Link>
                 </li>
               )}
+               {userInfo && userInfo.isAdmin && (
+                <NavDropdown title='Admin' id='adminmenu'>
+                  <Link className="nav-link" to='/admin/userlist'>
+                    <NavDropdown.Item>Users</NavDropdown.Item>
+                  </Link>
+                  <Link className="nav-link" to='/admin/medlist'>
+                    <NavDropdown.Item>Medicines</NavDropdown.Item>
+                  </Link>
+                  <Link className="nav-link" to='/admin/orderlist'>
+                    <NavDropdown.Item>Orders</NavDropdown.Item>
+                  </Link>
+                  <Link className="nav-link" to='/admin/appoinmentlist'>
+                    <NavDropdown.Item>Appoinments</NavDropdown.Item>
+                  </Link>
+                </NavDropdown>
+              )}
             </ul>
           </div>
         </div>
