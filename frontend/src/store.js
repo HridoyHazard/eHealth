@@ -16,6 +16,7 @@ import {
   ambulancesListReducer,
   ambulancesDetailsReducer,
 } from "./reducers/ambulancesReducers.js";
+import { appoinmentCreateReducer } from "./reducers/appoinmentReducers.js";
 import { cartReducer } from "./reducers/cartReducers.js";
 import {
   userLoginReducer,
@@ -58,6 +59,7 @@ const reducer = combineReducers({
   orderPay: orderPayReducer,
   orderListMy: orderListMyReducer,
   orderList: orderListReducer,
+  appoinmentCreate: appoinmentCreateReducer,
 });
 
 const cartItemsFromStorage = localStorage.getItem("cartItems")

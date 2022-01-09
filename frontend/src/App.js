@@ -26,6 +26,8 @@ import OrderListScreen from "./pages/screen/OrderListScreen";
 import DoctorListScreen from "./pages/screen/DoctorListScreen";
 import AmbulanceListScreen from "./pages/screen/AmbulanceListScreen";
 import ChatScreen from './pages/screen/ChatScreen'
+import AppoinmentScreen from "./pages/screen/AppoinmentScreen";
+import AppoinmentListScreen from "./pages/screen/AppoinmentListScreen";
 
 function App() {
   return (
@@ -48,12 +50,14 @@ function App() {
         <Route exact path="/payment" component={PaymentScreen} />
         <Route exact path="/order/:id" component={OrderScreen} />
         <Route exact path="/placeorder" component={PlaceOrderScreen} />
+        <Route exact path="/appoinment" component={AppoinmentScreen} />
         <Route exact path="/Signup" component={Signup} />
         <Route exact path="/ProfileScreen" component={ProfileScreen} />
         <Route exact path="/admin/userlist" component={UserListScreen} />
         <Route exact path="/admin/medlist" component={MedicineListScreen} />
         <Route exact path="/admin/orderlist" component={OrderListScreen} />
         <Route exact path="/admin/doctorlist" component={DoctorListScreen} />
+        <Route exact path="/admin/appoinmentlist" component={AppoinmentListScreen} />
         <Route
           exact
           path="/admin/ambulancelist"

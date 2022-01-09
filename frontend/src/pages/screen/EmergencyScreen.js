@@ -54,7 +54,7 @@ export const EmergencyScreen = ({ match }) => {
                   </Row>
                 </ListGroup.Item>
                 <ListGroup.Item>
-                  <Button>Get Service</Button>
+                  <Button>Call Now</Button>
                 </ListGroup.Item>
               </ListGroup>
             </Card>

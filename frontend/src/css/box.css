@@ -1,0 +1,8 @@
+form {
+    max-width: 380px;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+    margin-left: 8rem;
+    box-shadow: 0px 3px 24px -8px rgba(0, 0, 0, 0.75);
+  }

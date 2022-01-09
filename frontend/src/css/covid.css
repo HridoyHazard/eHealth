@@ -165,7 +165,8 @@ div {
   font-size: 3rem;
 }
 #covid_update h5{
-  font-size: 30px;
+  font-size: 25px;
+  color: white;
 }
 #bd {
   padding: 30px;

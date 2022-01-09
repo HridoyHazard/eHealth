@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Col, Row } from "react-bootstrap";
 import "../../css/chat.css";
 
 import io from "socket.io-client";

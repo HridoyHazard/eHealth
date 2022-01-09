@@ -4,7 +4,7 @@
   margin: 30px;
   min-height: 30rem;
 }
-form {
+.box form {
   max-width: 350px;
   border-radius: 5px;
   padding: 20px;

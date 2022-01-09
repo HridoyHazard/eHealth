@@ -16,6 +16,9 @@ export const DoctorScreen = ({ history, match }) => {
     dispatch(listDoctorDetails(match.params.id));
   }, [dispatch, match]);
 
+  const getAppoinmentHandler = () => {
+    history.push('/Login?redirect=appoinment')
+  }
   const chatHandler = () => {
     history.push('/Login?redirect=chat')
   }
@@ -61,7 +64,9 @@ export const DoctorScreen = ({ history, match }) => {
                   </Row>
                 </ListGroup.Item>
                 <ListGroup.Item>
-                  <Button> Get Appoinment</Button>
+                  <Button  type="button"
+                    className="btn-block"
+                    onClick={getAppoinmentHandler}> Get Appoinment</Button>
                 </ListGroup.Item>
                 <ListGroup.Item>
                   <Button
