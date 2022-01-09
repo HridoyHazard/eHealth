@@ -9,7 +9,9 @@ import doctors from "./data/doctors.js";
 import Doctors from "./models/doctorsModel.js";
 import ambulances from "./data/ambulances.js";
 import Ambulances from "./models/ambulancesModel.js";
+import Appoinment from "./models/appointmentModel.js";
 import connectDB from './config/db.js';
+
 
 dotenv.config();
 
@@ -18,6 +20,7 @@ connectDB();
 const importData = async () => {
   try {
     await Order.deleteMany();
+    await Appoinment.deleteMany();
     await Meds.deleteMany();
     await Doctors.deleteMany();
     await Ambulances.deleteMany();
@@ -53,6 +56,7 @@ const importData = async () => {
 const destroyData = async () => {
   try {
     await Order.deleteMany();
+    await Appoinment.deleteMany();
     await Meds.deleteMany();
     await Doctors.deleteMany();
     await Ambulances.deleteMany();
