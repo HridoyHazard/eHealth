@@ -13,6 +13,9 @@ const MedicineListScreen = ({ history, match }) => {
   const medsList = useSelector((state) => state.medsList);
   const { loading, error, meds } = medsList;
 
+  console.log(medsList)
+  console.log(loading)
+
   const medsDelete = useSelector((state) => state.medsDelete);
   const {
     loading: loadingDelete,
@@ -63,7 +66,7 @@ const MedicineListScreen = ({ history, match }) => {
         </Col>
         <Col className="text-right">
           <Button className="my-3" onClick={createMedicineHandler}>
-            <i className="fas fa-plus"></i>Create Medicine
+            <i className="fas fa-plus"></i>Add Medicine
           </Button>
         </Col>
       </Row>

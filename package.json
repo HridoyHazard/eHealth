@@ -7,8 +7,9 @@
   "scripts": {
     "start": "node backend/server",
     "server": "nodemon backend/server",
+    "gerber": "nodemon backend/socket",
     "client": "npm start --prefix frontend",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "dev": "concurrently \"npm run server\" \"npm run client\" \"npm run gerber\"",
     "data:import": "node backend/seeder",
     "data:destroy": "node backend/seeder -d"
   },
@@ -21,7 +22,9 @@
     "express-async-handler": "^1.2.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.1.1",
-    "react-router-bootstrap": "^0.26.0"
+    "multer": "^1.4.4",
+    "react-router-bootstrap": "^0.26.0",
+    "socket.io": "^4.4.1"
   },
   "devDependencies": {
     "concurrently": "^6.4.0",

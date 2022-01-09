@@ -6,7 +6,7 @@ import Loader from "../../components/Loader.js";
 import Message from "../../components/Message.js";
 import { listDoctorDetails } from "../../actions/doctorsAction.js";
 
-export const DoctorScreen = ({ match }) => {
+export const DoctorScreen = ({ history, match }) => {
   const dispatch = useDispatch();
 
   const doctorsDetails = useSelector((state) => state.doctorsDetails);
@@ -15,6 +15,10 @@ export const DoctorScreen = ({ match }) => {
   useEffect(() => {
     dispatch(listDoctorDetails(match.params.id));
   }, [dispatch, match]);
+
+  const chatHandler = () => {
+    history.push('/Login?redirect=chat')
+  }
   return (
     <>
       <Link className="btn btn-light my-3" to="/Doctors">
@@ -57,7 +61,16 @@ export const DoctorScreen = ({ match }) => {
                   </Row>
                 </ListGroup.Item>
                 <ListGroup.Item>
-                  <Button>Get Appoinment</Button>
+                  <Button> Get Appoinment</Button>
+                </ListGroup.Item>
+                <ListGroup.Item>
+                  <Button
+                    type="button"
+                    className="btn-block"
+                    onClick={chatHandler}
+                  >
+                    Chat Now
+                  </Button>
                 </ListGroup.Item>
               </ListGroup>
             </Card>

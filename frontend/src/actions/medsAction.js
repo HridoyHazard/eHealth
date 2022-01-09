@@ -81,7 +81,7 @@ export const deleteMed = (id) => async (dispatch, getState) => {
     });
   } catch (error) {
     dispatch({
-      type: MED_DETAILS_FAIL,
+      type: MED_DELETE_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

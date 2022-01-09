@@ -5,7 +5,7 @@ import Medicine from "./pages/Medicine.js";
 import Doctors from "./pages/Doctors.js";
 import Emergency from "./pages/Emergency.js";
 import MedicineScreen from "./pages/screen/MedicineScreen.js";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route , Redirect } from "react-router-dom";
 import DoctorScreen from "./pages/screen/DoctorScreen.js";
 import EmergencyScreen from "./pages/screen/EmergencyScreen.js";
 import CartScreen from "./pages/screen/CartScreen.js";
@@ -22,6 +22,10 @@ import UserListScreen from "./pages/screen/UserListScreen";
 import UserEditScreen from "./pages/screen/UserEditScreen";
 import MedicineListScreen from "./pages/screen/MedicineListScreen";
 import MedicineEditScreen from "./pages/screen/MedicineEditScreen";
+import OrderListScreen from "./pages/screen/OrderListScreen";
+import DoctorListScreen from "./pages/screen/DoctorListScreen";
+import AmbulanceListScreen from "./pages/screen/AmbulanceListScreen";
+import ChatScreen from './pages/screen/ChatScreen'
 
 function App() {
   return (
@@ -34,6 +38,7 @@ function App() {
         <Route exact path="/Medicine" component={Medicine} />
         <Route exact path="/meds/:id" component={MedicineScreen} />
         <Route exact path="/cart/:id?" component={CartScreen} />
+        <Route exact path="/chat" component={ChatScreen} />
         <Route exact path="/Doctors" component={Doctors} />
         <Route exact path="/doctors/:id" component={DoctorScreen} />
         <Route exact path="/Emergency" component={Emergency} />
@@ -46,11 +51,20 @@ function App() {
         <Route exact path="/Signup" component={Signup} />
         <Route exact path="/ProfileScreen" component={ProfileScreen} />
         <Route exact path="/admin/userlist" component={UserListScreen} />
-        
         <Route exact path="/admin/medlist" component={MedicineListScreen} />
-
+        <Route exact path="/admin/orderlist" component={OrderListScreen} />
+        <Route exact path="/admin/doctorlist" component={DoctorListScreen} />
+        <Route
+          exact
+          path="/admin/ambulancelist"
+          component={AmbulanceListScreen}
+        />
         <Route exact path="/admin/user/:id/edit" component={UserEditScreen} />
-        <Route exact path="/admin/med/:id/edit" component={MedicineEditScreen} />
+        <Route
+          exact
+          path="/admin/med/:id/edit"
+          component={MedicineEditScreen}
+        />
         <Route exact path="/Login" component={Login} />
       </Container>
     </BrowserRouter>

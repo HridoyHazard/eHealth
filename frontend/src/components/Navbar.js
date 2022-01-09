@@ -84,8 +84,14 @@ export default function Navbar() {
                   <Link className="nav-link" to='/admin/orderlist'>
                     <NavDropdown.Item>Orders</NavDropdown.Item>
                   </Link>
+                  <Link className="nav-link" to='/admin/doctorlist'>
+                    <NavDropdown.Item>Doctors</NavDropdown.Item>
+                  </Link>
                   <Link className="nav-link" to='/admin/appoinmentlist'>
                     <NavDropdown.Item>Appoinments</NavDropdown.Item>
+                  </Link>
+                  <Link className="nav-link" to='/admin/ambulancelist'>
+                    <NavDropdown.Item>Ambulances</NavDropdown.Item>
                   </Link>
                 </NavDropdown>
               )}
